@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chá Revelação</title>
+    <style>
+        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
+        .btn { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
+        .btn-sim { background-color: #4CAF50; color: white; border: none; }
+        .btn-nao { background-color: #f44336; color: white; border: none; }
+    </style>
+</head>
+<body>
+    <h1>Olá, <%= convidado.nome %>!</h1>
+    <p>Você está convidado para o nosso Chá Revelação.</p>
+    
+    <% if (convidado.confirmado === true) { %>
+        <p>✅ Você já confirmou sua presença!</p>
+    <% } else if (convidado.confirmado === false) { %>
+        <p>❌ Você informou que não poderá ir.</p>
+    <% } else { %>
+        <p>Deseja confirmar sua presença?</p>
+        <form action="/confirmar" method="POST">
+            <input type="hidden" name="chave" value="<%= convidado.chave %>">
+            <button type="submit" name="resposta" value="sim" class="btn btn-sim">Sim, eu vou!</button>
+            <button type="submit" name="resposta" value="nao" class="btn btn-nao">Não poderei ir</button>
+        </form>
+    <% } %>
+</body>
+</html>

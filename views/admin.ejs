@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<body>
+    <h1>Painel Admin</h1>
+    
+    <h3>Criar Novo Convite</h3>
+    <form action="/admin/gerar" method="POST">
+        <input type="text" name="nome" placeholder="Nome do Convidado" required>
+        <button type="submit">Gerar Link</button>
+    </form>
+
+    <h3>Lista de Convidados</h3>
+    <table border="1" cellpadding="8">
+        <tr>
+            <th>Nome</th>
+            <th>Status</th>
+            <th>Link para Enviar</th>
+        </tr>
+        <% convidados.forEach(function(c) { %>
+        <tr>
+            <td><%= c.nome %></td>
+            <td>
+                <%= c.confirmado === true ? 'Confirmado ✅' : (c.confirmado === false ? 'Não vai ❌' : 'Pendente ⏳') %>
+            </td>
+            <td>seu-site.onrender.com/c/<%= c.chave %></td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
