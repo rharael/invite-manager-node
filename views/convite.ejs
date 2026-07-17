@@ -109,9 +109,9 @@ body{
 .btn-mapa:hover { background-color: #4da6e7; color: white; }
 
 .botoes-confirmacao { display: flex; gap: 10px; justify-content: center; margin-top: 15px; position: relative; z-index: 15; }
-.btn-sim { background-color: #fcf9f2; color: #d66476; border: 2px solid #d66476; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; }
+.btn-sim { background-color: #fcf9f2; color: #4caf50; border: 2px solid #4caf50; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; }
 .btn-sim:hover { background-color: #d66476; color: white; }
-.btn-nao { background-color: transparent; color: #999; border: 1px solid #ccc; flex: 1; padding: 12px; border-radius: 50px; cursor: pointer; transition: 0.3s;}
+.btn-nao { background-color: transparent; color: #d66476; border: 1px solid #ccc; flex: 1; padding: 12px; border-radius: 50px; cursor: pointer; transition: 0.3s;}
 
 .presente-box {
     margin-top: 30px;
@@ -176,8 +176,8 @@ body{
     <a href="https://maps.app.goo.gl/eBJZXSC9CJySe9bH6" target="_blank" class="btn btn-mapa">👆 VER NO MAPA</a>
 
     <% if (convidado.confirmado === true) { %>
+        <%= convidado.nome %>
         <p style="margin-top: 20px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
-        <%= convidado.nome %>!
     <% } else if (convidado.confirmado === false) { %>
         <p style="margin-top: 20px; color: #ff758c; font-weight: 600; position: relative; z-index: 15;">❌ Você informou que não poderá ir.</p>
     <% } else { %>
