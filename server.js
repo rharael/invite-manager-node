@@ -48,9 +48,9 @@ app.post('/confirmar', async (req, res) => {
     if (error) return res.status(500).send('Erro ao salvar resposta.');
 
     if (vaiComparecer) {
-        res.send('<h1>Presença Confirmada! Nos vemos lá! 🎉</h1>');
+        res.render('confirmado'); // Redireciona para a sua página!
     } else {
-        res.send('<h1>Que pena que não poderá ir. Obrigado por avisar! 💙🩷</h1>');
+        res.render('negado'); // Redireciona para a página de quem não vai
     }
 });
 
@@ -77,6 +77,13 @@ app.post('/admin/gerar', async (req, res) => {
     const chave = nanoid(6); // Gera uma chave de 6 caracteres
 
     await supabase.from('convidados').insert([{ nome, chave }]);
+    res.redirect('/admin');
+});
+
+// Rota para EXCLUIR convidado
+app.post('/admin/excluir', async (req, res) => {
+    const { id } = req.body;
+    await supabase.from('convidados').delete().eq('id', id);
     res.redirect('/admin');
 });
 

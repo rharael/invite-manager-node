@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aviso Recebido</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+/* MESMO CSS QUE VOCÊ ENVIOU */
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#d7f0ff,#ffe4ef); min-height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+.card{ background:white; width:90%; max-width:500px; border-radius:24px; padding:45px 35px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.15); animation:fadeUp .8s ease; }
+.check{ width:110px; height:110px; margin:auto; border-radius:50%; background:#ccc; display:flex; justify-content:center; align-items:center; font-size:60px; color:white; animation:pop .6s ease; }
+h1{ margin-top:28px; color:#333; font-size:2rem; }
+p{ margin-top:18px; color:#666; line-height:1.7; font-size:1.08rem; }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:translateY(0); } }
+@keyframes pop{ 0%{ transform:scale(.3); } 70%{ transform:scale(1.1); } 100%{ transform:scale(1); } }
+</style>
+</head>
+<body>
+<div class="card">
+    <div class="check">💙🩷</div>
+    <h1>Ah, que pena!</h1>
+    <p>Agradecemos por nos avisar. Sentiremos sua falta no nosso <strong>Chá Revelação</strong>.</p>
+</div>
+</body>
+</html>

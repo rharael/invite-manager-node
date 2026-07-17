@@ -1,30 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Admin - Chá Revelação</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#d7f0ff,#ffe4ef); min-height:100vh; display:flex; justify-content:center; align-items:center; padding: 20px; }
+.card{ background:white; width:100%; max-width:800px; border-radius:24px; padding:35px; box-shadow:0 20px 50px rgba(0,0,0,.15); }
+h1, h3 { color:#333; margin-bottom: 15px; }
+.form-add { display: flex; gap: 10px; margin-bottom: 30px; }
+input[type="text"] { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family:'Poppins',sans-serif; }
+.btn-gerar { background: #6fd18f; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family:'Poppins',sans-serif;}
+table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: left; }
+th, td { padding: 12px; border-bottom: 1px solid #eee; }
+th { color: #666; font-weight: 600; }
+.status-sim { color: #6fd18f; font-weight: bold; }
+.status-nao { color: #ff758c; font-weight: bold; }
+.status-pendente { color: #f39c12; font-weight: bold; }
+.btn-excluir { background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.copy-link { font-size: 12px; color: #007bff; text-decoration: none; word-break: break-all;}
+</style>
+</head>
 <body>
-    <h1>Painel Admin</h1>
+<div class="card">
+    <h1>Painel de Convidados</h1>
     
-    <h3>Criar Novo Convite</h3>
-    <form action="/admin/gerar" method="POST">
+    <h3>Novo Convite</h3>
+    <form action="/admin/gerar" method="POST" class="form-add">
         <input type="text" name="nome" placeholder="Nome do Convidado" required>
-        <button type="submit">Gerar Link</button>
+        <button type="submit" class="btn-gerar">+ Gerar Link</button>
     </form>
 
-    <h3>Lista de Convidados</h3>
-    <table border="1" cellpadding="8">
-        <tr>
-            <th>Nome</th>
-            <th>Status</th>
-            <th>Link para Enviar</th>
-        </tr>
-        <% convidados.forEach(function(c) { %>
-        <tr>
-            <td><%= c.nome %></td>
-            <td>
-                <%= c.confirmado === true ? 'Confirmado ✅' : (c.confirmado === false ? 'Não vai ❌' : 'Pendente ⏳') %>
-            </td>
-            <td>invite-manager-node.onrender.com/c/<%= c.chave %></td>
-        </tr>
-        <% }) %>
-    </table>
+    <h3>Lista de Convidados (<%= convidados.length %>)</h3>
+    <div style="overflow-x: auto;">
+        <table>
+            <tr>
+                <th>Nome</th>
+                <th>Status</th>
+                <th>Link (Copie e Envie)</th>
+                <th>Ações</th>
+            </tr>
+            <% convidados.forEach(function(c) { %>
+            <tr>
+                <td><%= c.nome %></td>
+                <td>
+                    <% if (c.confirmado === true) { %> <span class="status-sim">Confirmado ✓</span> <% } %>
+                    <% if (c.confirmado === false) { %> <span class="status-nao">Não vai ✗</span> <% } %>
+                    <% if (c.confirmado === null) { %> <span class="status-pendente">Pendente ⏳</span> <% } %>
+                </td>
+                <td><span class="copy-link">invite-manager-node.onrender.com/c/<%= c.chave %></span></td>
+                <td>
+                    <!-- Formulário para o botão de excluir -->
+                    <form action="/admin/excluir" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir <%= c.nome %>?');">
+                        <input type="hidden" name="id" value="<%= c.id %>">
+                        <button type="submit" class="btn-excluir">Excluir</button>
+                    </form>
+                </td>
+            </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
 </body>
 </html>

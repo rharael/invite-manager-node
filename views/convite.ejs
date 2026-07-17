@@ -1,29 +1,41 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
-    <title>Chá Revelação</title>
-    <style>
-        body { font-family: sans-serif; text-align: center; margin-top: 50px; }
-        .btn { padding: 10px 20px; margin: 10px; font-size: 16px; cursor: pointer; }
-        .btn-sim { background-color: #4CAF50; color: white; border: none; }
-        .btn-nao { background-color: #f44336; color: white; border: none; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite - Chá Revelação</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#d7f0ff,#ffe4ef); min-height:100vh; display:flex; justify-content:center; align-items:center; overflow:hidden; }
+.card{ background:white; width:90%; max-width:500px; border-radius:24px; padding:45px 35px; text-align:center; box-shadow:0 20px 50px rgba(0,0,0,.15); animation:fadeUp .8s ease; }
+h1{ color:#333; font-size:1.8rem; margin-bottom: 15px; }
+p{ color:#666; line-height:1.7; font-size:1.08rem; }
+.botoes { display: flex; gap: 15px; justify-content: center; margin-top: 25px; }
+.btn { padding: 12px 25px; font-size: 16px; font-weight: 600; border-radius: 50px; cursor: pointer; border: none; transition: 0.3s; font-family:'Poppins',sans-serif; }
+.btn-sim { background-color: #6fd18f; color: white; box-shadow: 0 4px 15px rgba(111, 209, 143, 0.4); }
+.btn-nao { background-color: #ff758c; color: white; box-shadow: 0 4px 15px rgba(255, 117, 140, 0.4); }
+.btn:hover { transform: translateY(-3px); }
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:translateY(0); } }
+</style>
 </head>
 <body>
+<div class="card">
     <h1>Olá, <%= convidado.nome %>!</h1>
-    <p>Você está convidado para o nosso Chá Revelação.</p>
+    <p>Você está convidado(a) para o nosso <strong>Chá Revelação</strong>.</p>
     
     <% if (convidado.confirmado === true) { %>
-        <p>✅ Você já confirmou sua presença!</p>
+        <p style="margin-top: 20px; color: #6fd18f; font-weight: 600;">✅ Você já confirmou sua presença!</p>
     <% } else if (convidado.confirmado === false) { %>
-        <p>❌ Você informou que não poderá ir.</p>
+        <p style="margin-top: 20px; color: #ff758c; font-weight: 600;">❌ Você informou que não poderá ir.</p>
     <% } else { %>
-        <p>Deseja confirmar sua presença?</p>
-        <form action="/confirmar" method="POST">
+        <p style="margin-top: 20px;">Por favor, confirme sua presença:</p>
+        <form action="/confirmar" method="POST" class="botoes">
             <input type="hidden" name="chave" value="<%= convidado.chave %>">
             <button type="submit" name="resposta" value="sim" class="btn btn-sim">Sim, eu vou!</button>
-            <button type="submit" name="resposta" value="nao" class="btn btn-nao">Não poderei ir</button>
+            <button type="submit" name="resposta" value="nao" class="btn btn-nao">Não irei</button>
         </form>
     <% } %>
+</div>
 </body>
 </html>
