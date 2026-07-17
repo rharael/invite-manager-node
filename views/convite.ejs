@@ -180,7 +180,12 @@ body{
         <%= convidado.nome %>
         <p style="margin-top: 20px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
     <% } else if (convidado.confirmado === false) { %>
-        <p style="margin-top: 20px; color: #ff758c; font-weight: 600; position: relative; z-index: 15;">❌ Você informou que não poderá ir.</p>
+        <%= convidado.nome %>
+        <p style="margin-top: 20px; color: #ff758c; font-weight: 600; position: relative; z-index: 15;">💔 Você informou que não poderá ir.</p>
+        <form action="/confirmar" method="POST" class="botoes-confirmacao">
+            <input type="hidden" name="chave" value="<%= convidado.chave %>">
+            <button type="submit" name="resposta" value="sim" class="btn-sim">Mudei de ideia quero ir!</button>
+        </form>
     <% } else { %>
         <form action="/confirmar" method="POST" class="botoes-confirmacao">
             <input type="hidden" name="chave" value="<%= convidado.chave %>">
