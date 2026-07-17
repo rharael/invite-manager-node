@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Convite - Chá Revelação</title>
+<!-- Importando fontes para o texto e para os nomes -->
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+*{ margin:0; padding:0; box-sizing:border-box; }
+body{ 
+    font-family:'Poppins',sans-serif; 
+    /* Fundo imitando o papel creme da imagem */
+    background-color: #fdfaf5; 
+    background-image: radial-gradient(#f0e4d8 1px, transparent 1px);
+    background-size: 20px 20px;
+    min-height:100vh; 
+    display:flex; justify-content:center; align-items:center; 
+    padding: 20px;
+}
+.convite-container {
+    background: #fdfaf5;
+    width: 100%; max-width: 500px;
+    border-radius: 30px;
+    padding: 40px 25px;
+    text-align: center;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    position: relative;
+    border: 2px solid #f9e1e6; /* Borda sutil */
+    animation: fadeUp .8s ease;
+}
+
+.intro-text { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; }
+.descobrir-text { color: #d66476; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
+
+/* Estilo dos nomes parecido com a imagem */
+.nomes-container { font-family: 'Dancing Script', cursive; font-size: 3.5rem; line-height: 1; margin-bottom: 20px; }
+.nome-rosa { color: #f07b92; }
+.nome-azul { color: #4da6e7; }
+.ou-text { font-family: 'Poppins', sans-serif; font-size: 1.2rem; color: #888; font-weight: 300; margin: 0 10px; }
+
+.divider { display: flex; align-items: center; justify-content: center; gap: 10px; margin-bottom: 20px; }
+.divider div { width: 50px; height: 2px; }
+.div-rosa { background: #f07b92; }
+.div-azul { background: #4da6e7; }
+
+.info-box { margin-bottom: 25px; color: #444; }
+.data-texto { font-size: 1.8rem; font-weight: 400; color: #555; }
+.hora-texto { color: #d66476; font-size: 1.1rem; }
+.local-texto { margin-top: 15px; font-weight: 600; color: #d66476;}
+.local-sub { font-size: 1.1rem; color: #444; }
+
+.btn { 
+    display: block; width: 100%; max-width: 300px; margin: 10px auto; 
+    padding: 12px 20px; font-size: 16px; font-weight: 600; border-radius: 50px; 
+    text-decoration: none; cursor: pointer; transition: 0.3s; 
+    font-family:'Poppins',sans-serif; text-align: center;
+}
+.btn-mapa { 
+    background-color: transparent; color: #4da6e7; 
+    border: 2px solid #4da6e7; 
+}
+.btn-mapa:hover { background-color: #4da6e7; color: white; }
+
+.botoes-confirmacao { display: flex; gap: 10px; justify-content: center; margin-top: 15px; }
+.btn-sim { background-color: #fcf9f2; color: #d66476; border: 2px solid #d66476; flex: 1; }
+.btn-sim:hover { background-color: #d66476; color: white; }
+.btn-nao { background-color: transparent; color: #999; border: 1px solid #ccc; flex: 1; }
+
+.presente-box {
+    margin-top: 30px;
+    background: #fcf6f7;
+    border: 2px dashed #f07b92;
+    border-radius: 15px;
+    padding: 15px;
+}
+.presente-title { color: #d66476; font-size: 0.9rem; margin-bottom: 5px; }
+.presente-item { font-size: 1.2rem; font-weight: 600; color: #444; }
+
+/* Decorativos */
+.decoracao-top { display: flex; justify-content: space-between; font-size: 2rem; margin-bottom: 10px; }
+.decoracao-bot { display: flex; justify-content: space-between; font-size: 2.5rem; margin-top: -20px; margin-bottom: 20px;}
+
+@keyframes fadeUp{ from{ opacity:0; transform:translateY(30px); } to{ opacity:1; transform:translateY(0); } }
+</style>
+</head>
+<body>
+
+<div class="convite-container">
+    
+    <div class="decoracao-top">
+        <span>🎀</span><span>🎈</span>
+    </div>
+
+    <p class="intro-text">
+        Olá, <%= convidado.nome %>!<br>
+        Estamos vivendo o nosso maior sonho e queremos compartilhar com você esse momento único!
+    </p>
+
+    <p class="descobrir-text">Venha descobrir com a gente se vem por aí</p>
+
+    <div class="nomes-container">
+        <span class="nome-rosa">Heloisa</span>
+        <span class="ou-text">ou</span>
+        <span class="nome-azul">José Bernardo</span>
+    </div>
+
+    <div class="divider">
+        <div class="div-rosa"></div>
+        <span>💖 💙</span>
+        <div class="div-azul"></div>
+    </div>
+
+    <div class="info-box">
+        <div class="data-texto">📅 16 de agosto</div>
+        <div class="hora-texto">às 16:00 da tarde 🕒</div>
+        <div class="local-texto">Local:</div>
+        <div class="local-sub">📍 Espaço de Eventos Festheje</div>
+    </div>
+
+    <!-- Substitua o link do href pelo link do Google Maps do local -->
+    <a href="https://maps.google.com/?q=Espaço+de+Eventos+Festheje" target="_blank" class="btn btn-mapa">👆 VER NO MAPA</a>
+
+    <% if (convidado.confirmado === true) { %>
+        <p style="margin-top: 20px; color: #6fd18f; font-weight: 600;">✅ Você já confirmou sua presença!</p>
+    <% } else if (convidado.confirmado === false) { %>
+        <p style="margin-top: 20px; color: #ff758c; font-weight: 600;">❌ Você informou que não poderá ir.</p>
+    <% } else { %>
+        <form action="/confirmar" method="POST" class="botoes-confirmacao">
+            <input type="hidden" name="chave" value="<%= convidado.chave %>">
+            <button type="submit" name="resposta" value="sim" class="btn btn-sim">👆 Confirmar Presença</button>
+            <button type="submit" name="resposta" value="nao" class="btn btn-nao">Não irei</button>
+        </form>
+    <% } %>
+
+    <div class="presente-box">
+        <div class="presente-title">♡ Sugestão de presentes ♡</div>
+        <!-- Aqui a mágica acontece: Puxa o presente específico do banco de dados! -->
+        <div class="presente-item">🎁 <%= convidado.presente || 'Sua presença é nosso maior presente!' %></div>
+    </div>
+
+    <div class="decoracao-bot">
+        <span>🧸</span><span>🧸</span>
+    </div>
+
+</div>
+
+</body>
+</html>

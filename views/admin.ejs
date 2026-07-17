@@ -7,29 +7,47 @@
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
 <style>
 *{ margin:0; padding:0; box-sizing:border-box; }
-body{ font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#d7f0ff,#ffe4ef); min-height:100vh; display:flex; justify-content:center; align-items:center; padding: 20px; }
-.card{ background:white; width:100%; max-width:800px; border-radius:24px; padding:35px; box-shadow:0 20px 50px rgba(0,0,0,.15); }
+body{ font-family:'Poppins',sans-serif; background:linear-gradient(135deg,#d7f0ff,#ffe4ef); min-height:100vh; display:flex; justify-content:center; align-items:flex-start; padding: 40px 20px; }
+.card{ background:white; width:100%; max-width:1100px; border-radius:24px; padding:35px; box-shadow:0 20px 50px rgba(0,0,0,.15); }
 h1, h3 { color:#333; margin-bottom: 15px; }
-.form-add { display: flex; gap: 10px; margin-bottom: 30px; }
-input[type="text"] { flex: 1; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family:'Poppins',sans-serif; }
-.btn-gerar { background: #6fd18f; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family:'Poppins',sans-serif;}
+.form-add { display: flex; gap: 10px; margin-bottom: 30px; flex-wrap: wrap; background: #f9f9f9; padding: 20px; border-radius: 12px; border: 1px solid #eee; }
+input[type="text"], select { flex: 1; min-width: 200px; padding: 12px; border: 1px solid #ddd; border-radius: 8px; font-family:'Poppins',sans-serif; }
+.btn-gerar { background: #6fd18f; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; font-weight: 600; font-family:'Poppins',sans-serif; white-space: nowrap;}
 table { width: 100%; border-collapse: collapse; margin-top: 10px; text-align: left; }
-th, td { padding: 12px; border-bottom: 1px solid #eee; }
+th, td { padding: 12px; border-bottom: 1px solid #eee; vertical-align: middle; }
 th { color: #666; font-weight: 600; }
 .status-sim { color: #6fd18f; font-weight: bold; }
 .status-nao { color: #ff758c; font-weight: bold; }
 .status-pendente { color: #f39c12; font-weight: bold; }
-.btn-excluir { background: #ff4d4d; color: white; border: none; padding: 6px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.btn-excluir { background: #ff4d4d; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; }
+.btn-salvar { background: #4da6e7; color: white; border: none; padding: 8px 12px; border-radius: 6px; cursor: pointer; font-size: 12px; margin-right: 5px; }
 .copy-link { font-size: 12px; color: #007bff; text-decoration: none; word-break: break-all;}
+.edit-form { display: flex; flex-direction: column; gap: 5px; }
+.edit-form select { padding: 6px; font-size: 13px; min-width: auto; }
 </style>
 </head>
 <body>
 <div class="card">
     <h1>Painel de Convidados</h1>
     
-    <h3>Novo Convite</h3>
+    <h3>Criar Novo Convite</h3>
     <form action="/admin/gerar" method="POST" class="form-add">
         <input type="text" name="nome" placeholder="Nome do Convidado" required>
+        
+        <select name="presente1" required>
+            <option value="" disabled selected>Escolha a Fralda...</option>
+            <% LISTA_PRESENTE_1.forEach(function(item) { %>
+                <option value="<%= item %>"><%= item %></option>
+            <% }) %>
+        </select>
+
+        <select name="presente2" required>
+            <option value="" disabled selected>Escolha o 2º Presente...</option>
+            <% LISTA_PRESENTE_2.forEach(function(item) { %>
+                <option value="<%= item %>"><%= item %></option>
+            <% }) %>
+        </select>
+
         <button type="submit" class="btn-gerar">+ Gerar Link</button>
     </form>
 
@@ -38,13 +56,30 @@ th { color: #666; font-weight: 600; }
         <table>
             <tr>
                 <th>Nome</th>
+                <th>Presentes Sugeridos (Edite aqui)</th>
                 <th>Status</th>
-                <th>Link (Copie e Envie)</th>
+                <th>Link</th>
                 <th>Ações</th>
             </tr>
             <% convidados.forEach(function(c) { %>
             <tr>
-                <td><%= c.nome %></td>
+                <td><strong><%= c.nome %></strong></td>
+                <td>
+                    <!-- Formulário de Edição direto na tabela -->
+                    <form action="/admin/editar" method="POST" class="edit-form">
+                        <input type="hidden" name="id" value="<%= c.id %>">
+                        <select name="presente1" onchange="this.form.submit()">
+                            <% LISTA_PRESENTE_1.forEach(function(item) { %>
+                                <option value="<%= item %>" <%= c.presente1 === item ? 'selected' : '' %>><%= item %></option>
+                            <% }) %>
+                        </select>
+                        <select name="presente2" onchange="this.form.submit()">
+                            <% LISTA_PRESENTE_2.forEach(function(item) { %>
+                                <option value="<%= item %>" <%= c.presente2 === item ? 'selected' : '' %>><%= item %></option>
+                            <% }) %>
+                        </select>
+                    </form>
+                </td>
                 <td>
                     <% if (c.confirmado === true) { %> <span class="status-sim">Confirmado ✓</span> <% } %>
                     <% if (c.confirmado === false) { %> <span class="status-nao">Não vai ✗</span> <% } %>
@@ -52,10 +87,9 @@ th { color: #666; font-weight: 600; }
                 </td>
                 <td><span class="copy-link">invite-manager-node.onrender.com/c/<%= c.chave %></span></td>
                 <td>
-                    <!-- Formulário para o botão de excluir -->
-                    <form action="/admin/excluir" method="POST" onsubmit="return confirm('Tem certeza que deseja excluir <%= c.nome %>?');">
+                    <form action="/admin/excluir" method="POST" onsubmit="return confirm('Excluir <%= c.nome %>?');">
                         <input type="hidden" name="id" value="<%= c.id %>">
-                        <button type="submit" class="btn-excluir">Excluir</button>
+                        <button type="submit" class="btn-excluir">🗑️ Excluir</button>
                     </form>
                 </td>
             </tr>
