@@ -173,10 +173,11 @@ body{
         <div class="local-sub">Espaço de Eventos Festheje</div>
     </div>
 
-    <a href="https://maps.google.com/?q=Espaço+de+Eventos+Festheje" target="_blank" class="btn btn-mapa">👆 VER NO MAPA</a>
+    <a href="https://maps.app.goo.gl/eBJZXSC9CJySe9bH6" target="_blank" class="btn btn-mapa">👆 VER NO MAPA</a>
 
     <% if (convidado.confirmado === true) { %>
         <p style="margin-top: 20px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
+        <%= convidado.nome %>!
     <% } else if (convidado.confirmado === false) { %>
         <p style="margin-top: 20px; color: #ff758c; font-weight: 600; position: relative; z-index: 15;">❌ Você informou que não poderá ir.</p>
     <% } else { %>

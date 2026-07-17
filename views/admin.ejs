@@ -85,7 +85,7 @@ th { color: #666; font-weight: 600; }
                     <% if (c.confirmado === false) { %> <span class="status-nao">Não vai ✗</span> <% } %>
                     <% if (c.confirmado === null) { %> <span class="status-pendente">Pendente ⏳</span> <% } %>
                 </td>
-                <td><span class="copy-link">invite-manager-node.onrender.com/c/<%= c.chave %></span></td>
+                <td><span class="copy-link">https://invite-manager-node.onrender.com/c/<%= c.chave %></span></td>
                 <td>
                     <form action="/admin/excluir" method="POST" onsubmit="return confirm('Excluir <%= c.nome %>?');">
                         <input type="hidden" name="id" value="<%= c.id %>">
