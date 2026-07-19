@@ -64,22 +64,22 @@ body{
 .img-urso-esq {
     position: absolute;
     bottom: -50px;
-    left: -10px;
-    width: 160px;
+    left: -80px;
+    width: 360px;
     z-index: 10;
 }
 
 .img-urso-dir {
     position: absolute;
     bottom: -50px;
-    right: -10px;
-    width: 160px;
+    right: -80px;
+    width: 360px;
     z-index: 10;
 }
 
 /* ========================================= */
 
-.intro-text { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; position: relative; z-index: 2; }
+.intro-text { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; margin-top: 10px position: relative; z-index: 2; }
 .descobrir-text { color: #d66476; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
 
 .nomes-container { font-family: 'Dancing Script', cursive; font-size: 3.5rem; line-height: 1; margin-bottom: 20px; position: relative; z-index: 2; }
@@ -111,7 +111,7 @@ body{
 .botoes-confirmacao { display: flex; gap: 10px; justify-content: center; margin-top: 15px; position: relative; z-index: 15; }
 .btn-sim { background-color: #fcf9f2; color: #4caf50; border: 2px solid #4caf50; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; }
 .btn-sim:hover { background-color: #4caf50; color: white; }
-.btn-nao { background-color: transparent; color: #d66476; border: 1px solid #ccc; flex: 1; padding: 12px; border-radius: 50px; cursor: pointer; transition: 0.3s;}
+.btn-nao { background-color: transparent; color: #d66476; border: 1px solid #ccc; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s;}
 .btn-nao:hover { background-color: #d66476; color: white; }
 
 .presente-box {
@@ -156,7 +156,7 @@ body{
     <p class="descobrir-text">Venha descobrir com a gente se vem por aí</p>
 
     <div class="nomes-container">
-        <span class="nome-rosa">Heloisa</span>
+        <span class="nome-rosa">Heloísa</span>
         <span class="ou-text">ou</span>
         <span class="nome-azul">José Bernardo</span>
     </div>
@@ -168,9 +168,16 @@ body{
     </div>
 
     <div class="info-box">
-        <div class="data-texto">📅 16 de agosto</div>
-        <div class="hora-texto">às 16:00 da tarde</div>
-        <div class="local-texto">Local:</div>
+        <div class="data-texto">
+        <img src="/calendar.png" alt="calendário" onerror="this.style.display='none'">
+        16 de agosto
+        </div>
+        <div class="hora-texto">às 16:00 da tarde
+        <img src="/clock.png" alt="relógio" onerror="this.style.display='none'">
+        </div>
+        <div class="local-texto"><img src="/location-pin.png" alt="relógio" onerror="this.style.display='none'">
+        Local:
+        </div>
         <div class="local-sub">Espaço de Eventos Festheje</div>
     </div>
 
