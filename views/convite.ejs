@@ -64,7 +64,7 @@ body{
 .img-urso-esq {
     position: absolute;
     bottom: -50px;
-    left: -80px;
+    left: -140px;
     width: 360px;
     z-index: 10;
 }
@@ -72,9 +72,14 @@ body{
 .img-urso-dir {
     position: absolute;
     bottom: -50px;
-    right: -80px;
+    right: -140px;
     width: 360px;
     z-index: 10;
+}
+
+.img-icon {
+    bottom: -10px;
+    width: 50px;
 }
 
 /* ========================================= */
@@ -169,19 +174,19 @@ body{
 
     <div class="info-box">
         <div class="data-texto">
-        <img src="/calendar.png" alt="calendário" onerror="this.style.display='none'">
+        <img src="/calendar.png" alt="calendário" class="img-icon" onerror="this.style.display='none'">
         16 de agosto
         </div>
         <div class="hora-texto">às 16:00 da tarde
-        <img src="/clock.png" alt="relógio" onerror="this.style.display='none'">
+        <img src="/clock.png" alt="relógio" class="img-icon" onerror="this.style.display='none'">
         </div>
-        <div class="local-texto"><img src="/location-pin.png" alt="relógio" onerror="this.style.display='none'">
+        <div class="local-texto"><img src="/location-pin.png" alt="relógio" class="img-icon" onerror="this.style.display='none'">
         Local:
         </div>
         <div class="local-sub">Espaço de Eventos Festheje</div>
     </div>
 
-    <a href="https://maps.app.goo.gl/eBJZXSC9CJySe9bH6" target="_blank" class="btn btn-mapa">👆 VER NO MAPA</a>
+    <a href="https://maps.app.goo.gl/eBJZXSC9CJySe9bH6" target="_blank" class="btn btn-mapa">VER NO MAPA</a>
 
     <% if (convidado.confirmado === true) { %>
         <%= convidado.nome %>
@@ -196,7 +201,7 @@ body{
     <% } else { %>
         <form action="/confirmar" method="POST" class="botoes-confirmacao">
             <input type="hidden" name="chave" value="<%= convidado.chave %>">
-            <button type="submit" name="resposta" value="sim" class="btn-sim">👆 Confirmar Presença</button>
+            <button type="submit" name="resposta" value="sim" class="btn-sim">Confirmar Presença</button>
             <button type="submit" name="resposta" value="nao" class="btn-nao">Não irei</button>
         </form>
     <% } %>
