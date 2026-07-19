@@ -212,7 +212,7 @@ body{
             <% if(textoFralda.includes('fralda')) { %>
                 <img src="/fralda.png" alt="Fralda" onerror="this.style.display='none'">
             <% } %>
-            
+            <img src="/plus-icon.png" alt="Mais" onerror="this.style.display='none'">
             <!-- Imagem extra baseada no presente 2 -->
             <% if(textoMimo.includes('pomada')) { %>
                 <img src="/pomada.png" alt="Pomada" onerror="this.style.display='none'">
@@ -223,7 +223,27 @@ body{
             <% } %>
             
             <% if(textoMimo.includes('sabonete') || textoMimo.includes('shampoo') || textoMimo.includes('banho')) { %>
-                <img src="/sabonete.png" alt="Kit Banho" onerror="this.style.display='none'">
+                <img src="/sabonete.png" alt="Sabonete e Shampoo" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('kit banho')) { %>
+                <img src="/kit-banho.png" alt="Kit banho" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('manta')) { %>
+                <img src="/manta.png" alt="Manta para bebê unissex" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('escovinha')) { %>
+                <img src="/kit-escova-pente.png" alt="kit de escovinha e pente para bebê" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('cueiro')) { %>
+                <img src="/kit-cueiro.png" alt="kit cueiro" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('perfume')) { %>
+                <img src="/kit-perfume.png" alt="kit perfume" onerror="this.style.display='none'">
             <% } %>
             
              <!-- Você pode ir adicionando as imagens extras na sua pasta public depois -->

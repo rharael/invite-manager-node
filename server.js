@@ -70,7 +70,7 @@ const LISTA_PRESENTE_1 = ['Fralda P', 'Fralda M', 'Fralda G'];
 const LISTA_PRESENTE_2 = [
     'pomada para assadura', 'lenço umedecido', 'sabonete líquido para bebê', 
     'manta para bebê unissex', 'kit de escovinha e pente para bebê', 'kit cueiro', 
-    'kit de perfume para bebê', 'kit de fraldas de banho', 'toalhinha de banho', 
+    'kit de perfume para bebê', 'kit de fraldas de banho', 'kit de fraldas de ombro', 'toalhinha de banho', 
     'shampoo para bebê', 'naninha', 'kit manicure para bebê', 
     'kit banho (shampoo e sabonete)', 'mimo', 'termômetro para bebê', 
     'kit perfume mamãe e bebê'
