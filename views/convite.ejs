@@ -64,7 +64,7 @@ body{
 .img-urso-esq {
     position: absolute;
     bottom: -50px;
-    left: -140px;
+    left: -190px;
     width: 360px;
     z-index: 10;
 }
@@ -72,7 +72,7 @@ body{
 .img-urso-dir {
     position: absolute;
     bottom: -50px;
-    right: -140px;
+    right: -190px;
     width: 360px;
     z-index: 10;
 }
@@ -84,7 +84,7 @@ body{
 
 /* ========================================= */
 
-.intro-text { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; margin-top: 10px position: relative; z-index: 2; }
+.intro-text { color: #555; font-size: 0.95rem; line-height: 1.6; margin-bottom: 20px; margin-top: 10px; position: relative; z-index: 2; }
 .descobrir-text { color: #d66476; font-size: 1.1rem; font-weight: 600; margin-bottom: 10px; }
 
 .nomes-container { font-family: 'Dancing Script', cursive; font-size: 3.5rem; line-height: 1; margin-bottom: 20px; position: relative; z-index: 2; }
@@ -116,7 +116,7 @@ body{
 .botoes-confirmacao { display: flex; gap: 10px; justify-content: center; margin-top: 15px; position: relative; z-index: 15; }
 .btn-sim { background-color: #fcf9f2; color: #4caf50; border: 2px solid #4caf50; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s; }
 .btn-sim:hover { background-color: #4caf50; color: white; }
-.btn-nao { background-color: transparent; color: #d66476; border: 1px solid #ccc; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s;}
+.btn-nao { background-color: #fcf9f2; color: #d66476; border: 1px solid #d66476; flex: 1; padding: 12px; font-weight: bold; border-radius: 50px; cursor: pointer; transition: 0.3s;}
 .btn-nao:hover { background-color: #d66476; color: white; }
 
 .presente-box {
@@ -140,7 +140,9 @@ body{
 /* Responsividade para telas menores */
 @media(max-width: 500px) {
     .img-balao-esq, .img-balao-dir { width: 70px; top: 10px; }
-    .img-urso-esq, .img-urso-dir { width: 110px; bottom: -30px; }
+    .img-urso-esq, .img-urso-dir { width: 180px; bottom: -30px; }
+    .img-urso-esq {left: -100px;}
+    .img-urso-dir {right: -100px;}
     .img-laco { width: 140px; top: -30px; }
 }
 </style>
@@ -180,7 +182,7 @@ body{
         <div class="hora-texto">às 16:00 da tarde
         <img src="/clock.png" alt="relógio" class="img-icon" onerror="this.style.display='none'">
         </div>
-        <div class="local-texto"><img src="/location-pin.png" alt="relógio" class="img-icon" onerror="this.style.display='none'">
+        <div class="local-texto"><img src="/location-pin.png" alt="localização" class="img-icon" onerror="this.style.display='none'">
         Local:
         </div>
         <div class="local-sub">Espaço de Eventos Festheje</div>
