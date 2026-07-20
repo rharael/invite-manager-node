@@ -190,7 +190,7 @@ body{
     <a href="https://maps.app.goo.gl/eBJZXSC9CJySe9bH6" target="_blank" class="btn btn-mapa">VER NO MAPA</a>
 
     <% if (convidado.confirmado === true) { %>
-        <%= convidado.nome %>
+        <div class="data-texto"><%= convidado.nome %></div>
         <p style="margin-top: 20px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
     <% } else if (convidado.confirmado === false) { %>
         <%= convidado.nome %>
