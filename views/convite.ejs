@@ -191,7 +191,7 @@ body{
 
     <% if (convidado.confirmado === true) { %>
         <div class="data-texto"><%= convidado.nome %></div>
-        <p style="margin-top: 20px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
+        <p style="margin-top: 10px; color: #6fd18f; font-weight: 600; position: relative; z-index: 15;">✅ Você já confirmou sua presença!</p>
     <% } else if (convidado.confirmado === false) { %>
         <%= convidado.nome %>
         <p style="margin-top: 20px; color: #ff758c; font-weight: 600; position: relative; z-index: 15;">💔 Você informou que não poderá ir.</p>
