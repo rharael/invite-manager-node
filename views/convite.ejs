@@ -159,7 +159,7 @@ body{
         Estamos vivendo o nosso maior sonho e queremos compartilhar com você esse momento único!
     </p>
 
-    <p class="descobrir-text">Venha descobrir com a gente se vem por aí</p>
+    <p class="descobrir-text"><%= convidado.nome %> venha descobrir com a gente se vem por aí</p>
 
     <div class="nomes-container">
         <span class="nome-rosa">Heloísa</span>
@@ -277,6 +277,10 @@ body{
             
             <% if(textoMimo.includes('mimo')) { %>
                 <img src="/mimo.png" alt="mimo" onerror="this.style.display='none'">
+            <% } %>
+            
+            <% if(textoMimo.includes('termômetro')) { %>
+                <img src="/termometro.png" alt="termometro" onerror="this.style.display='none'">
             <% } %>
             
              <!-- Você pode ir adicionando as imagens extras na sua pasta public depois -->
